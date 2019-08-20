@@ -1,0 +1,6 @@
+.DS_Store
+*.thy~
+*_doc/
+#*
+output/
+*_test*
