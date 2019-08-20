@@ -1,11 +1,12 @@
-text\<open> 
-Original Source: \<^url>\<open>https://gitlab.com/aossie/ComputationalPhilosophy/blob/5296e31ff8115ff7ea2d6c900c32f101ec3322c3/Formalizations/Isabelle/QML.thy\<close>
-\<close>
-
 theory QML
 imports Main 
 
 begin
+section \<open> An Embedding of QML in HOL \<close>
+
+text\<open> 
+Original Source: \<^url>\<open>https://gitlab.com/aossie/ComputationalPhilosophy/blob/5296e31ff8115ff7ea2d6c900c32f101ec3322c3/Formalizations/Isabelle/QML.thy\<close>
+\<close>
 
   typedecl i    (* "the type for possible worlds" *)
   typedecl \<mu>    (* "the type for individuals"*)     

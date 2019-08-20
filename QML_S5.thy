@@ -1,12 +1,12 @@
-text\<open> 
-Original Source: \<^url>\<open>https://gitlab.com/aossie/ComputationalPhilosophy/blob/5296e31ff8115ff7ea2d6c900c32f101ec3322c3/Formalizations/Isabelle/QML_S5.thy\<close>
-\<close>
-
 theory QML_S5
 imports Main 
 
 begin
 section \<open> An Embedding of QML S5 in HOL \<close>
+text\<open> 
+Original Source: \<^url>\<open>https://gitlab.com/aossie/ComputationalPhilosophy/blob/5296e31ff8115ff7ea2d6c900c32f101ec3322c3/Formalizations/Isabelle/QML_S5.thy\<close>
+\<close>
+
 
   typedecl i    (* "the type for worlds" *)
   typedecl \<mu>    (* "the type for individuals" *)     
