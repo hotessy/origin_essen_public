@@ -4,6 +4,32 @@ theory v2_isar
 begin
 (*>*)
 
+text \<open>
+@{text "Compossibility\<^sub>2'"}: If a table @{term x} is originally made from matter @{term y} and it
+is possible for a table to be originally made from matter @{term z} according to plan @{term u}, 
+then it is also possible for table @{term x} to be originally made from matter @{term y} and in 
+addition some table or other @{term x'} to be originally made from matter @{term z} 
+according to plan @{term u}.
+\<close>
+
+
+text \<open>
+@{text "Origin Uniqueness\<^sub>1'"}: It is impossible that a single table @{term x} is originally made from 
+matter @{term y} and in addition is originally made from matter @{term z}.
+\<close>
+
+text \<open>
+@{text "Sufficiency\<^sub>2'"}: If it is possible that a table @{term x'} is originally made from matter @{term z}
+according to plan @{term u}, then necessarily any table originally made from matter @{term z} 
+according to plan @{term u} is the very table @{term x'} and no other.
+\<close>
+
+
+text \<open>
+@{text "Origin Essentialism\<^sub>2'"}: If a given table is originally made from certain matter, then it is necessary 
+that the given table is not originally made from any non-overlapping matter according to any plan.
+\<close>
+
 consts makeTable :: "\<mu> \<Rightarrow> \<mu> \<Rightarrow> \<sigma>" ("T")
 consts planTable :: "\<mu> \<Rightarrow> \<mu> \<Rightarrow> \<mu> \<Rightarrow> \<sigma>" ("P") (* (P x y p) \<equiv> x made from y according to p *)
 

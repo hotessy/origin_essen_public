@@ -2,6 +2,30 @@ theory v1_isar_K
   imports Main "../QML"
 begin
 
+text \<open>
+@{text "Compossibility\<^sub>1"}: If a table @{term x} is originally made from matter @{term y} and it
+is possible for any table to be originally made from matter @{term z} such that @{term y} and @{term z} 
+are distinct, then it is  possible for table @{term x} to be originally made from matter @{term y}
+and in addition some table @{term x'} to be originally made from matter @{term z}.
+\<close>
+
+text \<open>
+@{text "Origin Uniqueness\<^sub>1"}: It is impossible that a single table @{term x}, is originally made from 
+matter @{term y} and originally made from matter @{term z} such that @{term y} and @{term z} are distinct.
+\<close>
+
+
+text \<open>
+@{text "Sufficiency\<^sub>1"}: If it is possible that a table @{term x'} is originally made from matter @{term y}, 
+then necessarily any table, say @{term x}, originally made from matter @{term y} is the very table @{term x'}.
+\<close>
+
+text \<open>
+@{text "Origin Essentialism\<^sub>1"}: If it is possible that a table @{term x} is originally made from matter 
+@{term y} and that matter @{term y} and matter @{term z} are distinct, then it is impossible that 
+table @{term x} be originally made from any @{term z}.
+\<close>
+
 consts makeTable ::  "\<mu> \<Rightarrow> \<mu> \<Rightarrow> \<sigma>"  ("T") 
 (* (T x y) \<equiv> x made from y *)
 
