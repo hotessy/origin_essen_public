@@ -19,6 +19,68 @@ text \<open>
 which might be made from a hunk, @{term z}, distinct from @{term y}, is distinct from @{term x}.
 \<close>
 
+subsection \<open>Our Formulation\<close>
+
+text \<open>
+We paraphrased the arguments mentioned above to a more logically readable form, without distorting 
+their essence. 
+\<close>
+
+text \<open>
+@{text "Compossibility\<^sub>6"}: If any table, say @{term x}, is made from any hunk of matter, say @{term y}, 
+then necessarily if any table, say @{term x'}, is made from any hunk of matter, say @{term z}, 
+such that @{term y} and @{term z} are distinct, then it is possible that both tables @{term x} (made from @{term y}) 
+and @{term x'} (made from @{term z}) exist together.
+
+@{text "Origin Uniqueness\<^sub>6"}:
+If any table, say @{term x}, is made from any hunk of matter, say @{term y}, and any table, 
+say @{term x'}, is made from any hunk of matter, say @{term z}, such that @{term y} and @{term z} are distinct, 
+then @{term x} and @{term x'} are distinct.
+\<close>
+
+text \<open>
+@{text "Origin Essentialism\<^sub>6"}: If any table, say @{term x}, is made from any hunk of matter, say @{term y}, 
+then necessarily if any table, say @{term x'}, is made from any hunk of matter, say @{term z}, 
+such that @{term y} and @{term z} are distinct, then @{term x} and @{term x'} are distinct
+\<close>
+
+
+
+
+text \<open> We will using this version henceforth.\<close>
+
+
+subsection \<open>Overview of the Proof\<close>
+
+text \<open>
+
+\begin{enumerate}
+
+\item Setting-up the worlds:
+We begin in world @{term w} by assuming the antecedent of the thesis @{text "Origin Essentialism\<^sub>6"} 
+@{text "table_x1_from_y1: T x y w"}. On expanding the necessity operator in its consequent, 
+we obtain @{text "antecedent: ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<and> T x' z) v"} i.e. @{term y} 
+and @{term z} are distinct and table @{term x'} can be made from @{term z} in @{term v} are both true.
+We fix all the variables of universal quantifiers to maintain uniformity of meaning.
+We assume the negation of the consequent in a world @{term v} i.e. tables @{term x} and  @{term x'} are 
+identical, @{text "identity: (x\<^bold>=\<^sup>Lx') v"}. 
+
+
+\item Deriving co-existence of tables @{term x} and @{term x'} in @{term u}:
+We use @{text "Compossibility\<^sub>6"} to show that tables @{term x} and @{term x'} co-exist in a world.
+We derive the  @{text "Compossibility\<^sub>6 Consequent"} in @{term u} using @{term antecedent}. Using this
+we obtain @{text "Origin Uniqueness\<^sub>6 Antecedent"} 
+@{text "origin_uniqueness1_ante: ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z))) u"}.
+
+
+\item Falsifying @{term identity}:
+We obtain @{text "Origin Uniqueness\<^sub>6 Consequent"} @{text "(\<^bold>\<not>(x\<^bold>=\<^sup>Lx')) u"} using previously derived 
+@{term origin_uniqueness1_ante}. We use this obtained result to falsify @{term identity}.
+
+\end{enumerate}
+\<close>
+
+
 
 (* (T x y) \<equiv> x made from y *)
 consts makeTable ::  "\<mu> \<Rightarrow> \<mu> \<Rightarrow> \<sigma>"  ("T") 

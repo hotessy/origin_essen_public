@@ -31,7 +31,7 @@ Original Source: \<^url>\<open>https://gitlab.com/aossie/ComputationalPhilosophy
 
   (*<*) no_syntax "_list" :: "args \<Rightarrow> 'a list" ("[(_)]") (*>*)
     
-(*Some metalogical Operators for Kripke frames*)    
+(* Some metalogical Operators for Kripke frames *)    
 abbreviation valid :: "\<sigma> \<Rightarrow> bool" ("\<lfloor>_\<rfloor>") 
   where "\<lfloor>p\<rfloor> \<equiv> \<forall>w. p w"
 abbreviation follows_w :: "i \<Rightarrow> \<sigma> \<Rightarrow> bool" (infix"\<^bold>\<Turnstile>"55)
@@ -39,9 +39,20 @@ abbreviation follows_w :: "i \<Rightarrow> \<sigma> \<Rightarrow> bool" (infix"\
 abbreviation follows_glob :: "bool \<Rightarrow> \<sigma> \<Rightarrow> bool" (infix"\<^bold>\<turnstile>"40)
   where "(L \<^bold>\<turnstile> p )  \<equiv> (L \<longrightarrow> \<lfloor>p\<rfloor>)"
     
-    
+
+
+(* 
+axiomatization where reflexive : "(\<forall>x. x r x)"
+axiomatization where symmetric : "(\<forall>x y. x r y \<longrightarrow> y r x)"
+axiomatization where transitive : "(\<forall>x y z. ((x r y) \<and> (y r z) \<longrightarrow> (x r z)))"
+axiomatization where euclidean : "(\<forall>x y z. ((x r y) \<and> (x r z) \<longrightarrow> (y r z)))"
+ *)
+
+
+
 (* Some frequently used constraints for the accessibility relation *)    
 (* 
+
 abbreviation reflexive :: "bool"
   where "reflexive \<equiv> (\<forall>x. x r x)"
 abbreviation symmetric :: "bool"
@@ -60,12 +71,6 @@ abbreviation converselyWellFoundedset :: "bool"
   where "converselyWellFoundedset  \<equiv> \<forall>S::i\<Rightarrow>bool. (\<exists>a.(S(a)))  \<longrightarrow>  (\<exists>m.(S(m)  \<and> (\<forall>s.(S(s)   \<longrightarrow> (\<not> (m r s))  ))))  " 
 abbreviation finiteWorlds :: "bool"
   where "finiteWorlds \<equiv> finite (UNIV :: i set)"
-
-
-axiomatization where reflexive : "(\<forall>x. x r x)"
-axiomatization where symmetric : "(\<forall>x y. x r y \<longrightarrow> y r x)"
-axiomatization where transitive : "(\<forall>x y z. ((x r y) \<and> (y r z) \<longrightarrow> (x r z)))"
-axiomatization where euclidean : "(\<forall>x y z. ((x r y) \<and> (x r z) \<longrightarrow> (y r z)))"
 
     
 (* Some common modal logic s*)

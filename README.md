@@ -12,4 +12,4 @@ I formalised the arguments for origin essentialism given by Nathan Salmon (summa
 * Future work may include some other formalisation for *overlapping* instead leibniz identity (possibly mereology axioms), or a formalisation of the Four Worlds Paradox.
 
 ## 3. Working Paper
-A working paper for the proofs presented (in S5) may be viewed [here](https://drive.google.com/file/d/10vvm-rPawmxUcBszhSrrpPtIO80sgF0a/view?usp=sharing).
+A working paper for the proofs presented (in S5) can be viewed [here](https://drive.google.com/file/d/10vvm-rPawmxUcBszhSrrpPtIO80sgF0a/view?usp=sharing).
