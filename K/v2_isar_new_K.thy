@@ -28,7 +28,6 @@ lemma
   assumes compossibilty1: "\<lfloor>(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z)))\<rfloor>"
   assumes origin_uniqueness1: "\<lfloor>(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx'))))\<rfloor>" 
   shows origin_essentialism1: "\<lfloor>(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. T x y \<^bold>\<rightarrow> \<^bold>\<box>((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> \<^bold>\<not>(x\<^bold>=\<^sup>Lx')))\<rfloor>"
-
 proof(rule allI)
   fix w
   show "(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. T x y \<^bold>\<rightarrow> \<^bold>\<box>((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> \<^bold>\<not>(x\<^bold>=\<^sup>Lx'))) w" 
@@ -53,36 +52,37 @@ proof(rule allI)
               proof (rule impI)
                 assume "(w r v)"
                 show "((((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> \<^bold>\<not>(x\<^bold>=\<^sup>Lx'))) v)"
-              proof(rule impI)
-                assume antecedent: "((\<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<and> T x' z) v"
-                show "(\<^bold>\<not>(x\<^bold>=\<^sup>Lx')) v"
-                proof(rule notI)
-                  assume identity: "(x\<^bold>=\<^sup>Lx') v"
-
-                  from antecedent have table_x2_from_y2: "T x' z v" by (rule conjE)
-                  from antecedent have non_overlapping: "(\<^bold>\<not>(y\<^bold>=\<^sup>Lz)) v" by (rule conjE)
-
-                  from compossibilty1 have "(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w"..
-                  then have "(\<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
-                  then have "(\<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
-                  then have "(\<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
-                  then have "((T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
-                  then have "(\<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" 
-                    using table_x1_from_y1 and non_overlapping by auto
-                  then have "(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z)) v" using `w r v` by auto
-                  then have "(\<^bold>\<diamond>(T x y \<^bold>\<and> T x' z)) v" using table_x2_from_y2 by (rule mp)
-                  then obtain u where u: "v r u \<and> ((T x y \<^bold>\<and> T x' z) u)" by auto
-                  then have origin_uniqueness1_ante: "((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z))) u" 
-                    using  non_overlapping by auto
-                  from u have "v r u" by (rule conjE)
-
-                  from origin_uniqueness1 have "(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u"..
-                  then have "(\<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE)
-                  then have "(\<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE)
-                  then have "(\<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE)
-                  then have "(((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE) 
-                  then have "(\<^bold>\<not>(x\<^bold>=\<^sup>Lx')) u" using origin_uniqueness1_ante by (rule mp)
-                  then show "False" using identity and `v r u` by auto
+                proof(rule impI)
+                  assume antecedent: "((\<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<and> T x' z) v"
+                  show "(\<^bold>\<not>(x\<^bold>=\<^sup>Lx')) v"
+                  proof(rule notI)
+                    assume identity: "(x\<^bold>=\<^sup>Lx') v"
+  
+                    from antecedent have table_x2_from_y2: "T x' z v" by (rule conjE)
+                    from antecedent have non_overlapping: "(\<^bold>\<not>(y\<^bold>=\<^sup>Lz)) v" by (rule conjE)
+  
+                    from compossibilty1 have "(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w"..
+                    then have "(\<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
+                    then have "(\<^bold>\<forall>x'. \<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
+                    then have "(\<^bold>\<forall>z. (T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
+                    then have "((T x y \<^bold>\<and> \<^bold>\<not>(y\<^bold>=\<^sup>Lz)) \<^bold>\<rightarrow> \<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" by (rule allE)
+                    then have "(\<^bold>\<box>(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z))) w" 
+                      using table_x1_from_y1 and non_overlapping by auto
+                    then have "(T x' z \<^bold>\<rightarrow> \<^bold>\<diamond>(T x y \<^bold>\<and> T x' z)) v" using `w r v` by auto
+                    then have "(\<^bold>\<diamond>(T x y \<^bold>\<and> T x' z)) v" using table_x2_from_y2 by (rule mp)
+                    then obtain u where u: "v r u \<and> ((T x y \<^bold>\<and> T x' z) u)" by auto
+                    then have origin_uniqueness1_ante: "((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z))) u" 
+                      using  non_overlapping by auto
+                    from u have "v r u" by (rule conjE)
+  
+                    from origin_uniqueness1 have "(\<^bold>\<forall>x. \<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u"..
+                    then have "(\<^bold>\<forall>y. \<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE)
+                    then have "(\<^bold>\<forall>x'. \<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE)
+                    then have "(\<^bold>\<forall>z. ((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE)
+                    then have "(((\<^bold>\<not>(y\<^bold>=\<^sup>Lz) \<^bold>\<and> (T x y) \<^bold>\<and> (T x' z)) \<^bold>\<rightarrow> (\<^bold>\<not>(x\<^bold>=\<^sup>Lx')))) u" by (rule allE) 
+                    then have "(\<^bold>\<not>(x\<^bold>=\<^sup>Lx')) u" using origin_uniqueness1_ante by (rule mp)
+                    then show "False" using identity and `v r u` by auto
+                  qed
                 qed
               qed
             qed
@@ -91,7 +91,6 @@ proof(rule allI)
       qed
     qed
   qed
-qed
 qed
 
 

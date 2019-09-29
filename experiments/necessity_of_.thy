@@ -95,13 +95,9 @@ proof (rule allI)
               assume "((x \<^bold>\<leftrightarrow> y)) v"
               
               from possibility have "(\<^bold>\<diamond>(\<^bold>\<not>(x \<^bold>\<leftrightarrow> y))) w" by simp
-              then obtain u where u: " w r u \<and> ((\<^bold>\<not>(x \<^bold>\<leftrightarrow> y)) u)" by (rule exE)
-              then have "\<^bold>\<not>(x \<^bold>\<leftrightarrow> y) u" by (rule conjE)
-              from u have "w r u" by (rule conjE)
-    
-              have "(x \<^bold>\<leftrightarrow> y) u"
-                by (smt `w r v` `((x \<^bold>\<leftrightarrow> y)) v` local.necessity_of_identity symm `w r u`)
-              then show "False" using `\<^bold>\<not>(x \<^bold>\<leftrightarrow> y) u` by auto
+              then have "\<^bold>\<not>(x \<^bold>\<leftrightarrow> y) v"
+                by (smt `w r v` local.necessity_of_identity symm)
+              then show "False" using `(x \<^bold>\<leftrightarrow> y) v` by (rule notE)
             qed
           qed
         qed
